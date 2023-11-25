@@ -131,6 +131,7 @@
                     android:text="@string/_01_01_2000"
                     android:gravity="center"
                     android:background="#e0ded7"
+                    android:id="@+id/date"
                     />
             </LinearLayout>
             <Button
