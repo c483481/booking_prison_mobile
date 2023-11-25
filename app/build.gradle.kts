@@ -55,4 +55,11 @@ dependencies {
     // retrofit and gson
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // kodein dependency injection framework
+    implementation("org.kodein.di:kodein-di:7.16.0")
+
+    // navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
 }
