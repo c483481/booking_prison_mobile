@@ -90,7 +90,7 @@ class BookingActivity : AppCompatActivity(), BookingListener {
 
     override fun onClick(data: LiveData<Boolean>) {
         data.observe(this, Observer {
-            binding.loading.show()
+            binding.loading.hide()
             if(it) {
                 toast("booking success")
                 val i = Intent(this, HomeActivity::class.java)
@@ -98,6 +98,7 @@ class BookingActivity : AppCompatActivity(), BookingListener {
                 finish()
                 return@Observer
             }
+
             toast("booking failed")
         })
     }
