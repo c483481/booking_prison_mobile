@@ -43,13 +43,6 @@ class LoginUtils {
         }
     }
 
-    fun checkIsLogin() {
-        if(this.isLogin()) {
-            val i = Intent(con, HomeActivity::class.java)
-            con.startActivity(i)
-        }
-    }
-
     fun logOut() {
         editor.clear()
         editor.commit()

@@ -11,6 +11,7 @@ import com.example.booking_prison.R
 import com.example.booking_prison.databinding.ActivityLoginBinding
 import com.example.booking_prison.listener.LoginListener
 import com.example.booking_prison.response.LoginResponse
+import com.example.booking_prison.utils.LoginUtils
 import com.example.booking_prison.utils.hide
 import com.example.booking_prison.utils.show
 import com.example.booking_prison.utils.toast
@@ -18,10 +19,12 @@ import com.example.booking_prison.view_model.LoginViewModel
 
 class LoginActivity : AppCompatActivity(), LoginListener {
     lateinit var binding: ActivityLoginBinding
+    lateinit var loginUtils: LoginUtils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         setContentView(binding.root)
+        loginUtils = LoginUtils(this)
         val model = ViewModelProvider(this)[LoginViewModel::class.java]
         model.loginListener = this
         binding.model = model
@@ -43,6 +46,7 @@ class LoginActivity : AppCompatActivity(), LoginListener {
                 this.show()
                 return@Observer
             }
+            loginUtils.createLoginSession(it)
             val i  = Intent(this, HomeActivity::class.java)
             startActivity(i)
             finish()
