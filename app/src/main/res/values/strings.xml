@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">booking_prison</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="welcome">Welcome</string>
+    <string name="belum_punya_akun_sign_in">Belum Punya Akun? Sign In</string>
+    <string name="login">Login</string>
+    <string name="sudah_punya_akun_login">Sudah Punya Akun? Login</string>
 </resources>
