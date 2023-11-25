@@ -19,7 +19,8 @@ class LoginUtils(var con: Context) {
     fun createLoginSession(loginResponse: LoginResponse) {
         editor.putBoolean(IS_LOGIN, true)
         editor.putString(ROLE, loginResponse.tagRole)
-        editor.putString(KEY_AT, loginResponse.key.accessToken.token)
+        editor.putString(KEY_AT, "Bearer ${loginResponse.key.accessToken.token}")
+        editor.putString(NAME, loginResponse.username)
         editor.commit()
     }
 
@@ -27,8 +28,8 @@ class LoginUtils(var con: Context) {
         return pref.getString(KEY_AT, "")!!
     }
 
-    fun getRole(): String {
-        return pref.getString(ROLE, "Error")!!
+    fun getUsername(): String {
+        return pref.getString(NAME, "")!!
     }
 
     fun checkIsNotLogin() {
@@ -58,5 +59,6 @@ class LoginUtils(var con: Context) {
         const val IS_LOGIN = "isLoggedIn"
         const val ROLE = "role"
         const val KEY_AT = "uat"
+        const val NAME = "name"
     }
 }
