@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeActivity">
+    tools:context=".view.HomeActivity"
+    android:background="@drawable/background">
 
     <fragment
         android:id="@+id/host_fragment"
@@ -24,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#fffcfc"
+        android:background="#4DFFFFFF"
         app:menu="@menu/users_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
