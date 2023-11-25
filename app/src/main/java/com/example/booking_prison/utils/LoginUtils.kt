@@ -4,17 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import com.example.booking_prison.response.LoginResponse
-import com.example.booking_prison.view.HomeActivity
 import com.example.booking_prison.view.LoginActivity
 
-class LoginUtils {
-    lateinit var pref: SharedPreferences
-    lateinit var editor: SharedPreferences.Editor
-    lateinit var con: Context
-    val PRIVATE_MODE: Int = 0
+class LoginUtils(var con: Context) {
+    private var pref: SharedPreferences
+    private var editor: SharedPreferences.Editor
+    private val PRIVATE_MODE: Int = 0
 
-    constructor(con: Context) {
-        this.con = con
+    init {
         pref = con.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
         editor = pref.edit()
     }
