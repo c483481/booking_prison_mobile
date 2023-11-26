@@ -8,8 +8,10 @@ import com.example.booking_prison.utils.getBaseUrl
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface NapiNetwork {
@@ -21,6 +23,12 @@ interface NapiNetwork {
         @Query("showAll") showAll: Boolean = false,
     ): Call<Response<ResponseList<NapiResponse>>>
 
+    @POST("/napi")
+    fun postAddNapi(
+        @Header("Authorization") token: String,
+        @Body data: BodyNapi
+    ): Call<Any>
+
     companion object {
         operator fun invoke(): NapiNetwork {
             return Retrofit.Builder()
@@ -31,3 +39,10 @@ interface NapiNetwork {
         }
     }
 }
+
+data class BodyNapi(
+    val name: String,
+    val longTime: Int,
+    val reason: String,
+    val cellXid: String
+)
