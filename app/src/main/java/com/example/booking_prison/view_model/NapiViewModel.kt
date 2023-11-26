@@ -1,5 +1,6 @@
 package com.example.booking_prison.view_model
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.booking_prison.listener.NapiListener
 import com.example.booking_prison.repository.NapiRepository
@@ -23,11 +24,11 @@ class NapiViewModel: ViewModel() {
         }
     }
 
-    fun onClickBack() {
+    fun onClickBack(view: View) {
         napiListener.onClickBack()
     }
 
-    fun onClickAdd() {
+    fun onClickAdd(view: View) {
         napiListener.onClickAdd()
     }
 }

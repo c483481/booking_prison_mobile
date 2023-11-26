@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.booking_prison.view_model.NapiViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +29,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_back_button"
+                    android:onClickListener="@{model::onClickBack}"
                     />
             </LinearLayout>
             <TextView
@@ -51,6 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
+            android:visibility="invisible"
             >
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -59,6 +66,19 @@
                 tools:listitem="@layout/adapter_napi"
                 />
         </ScrollView>
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Data Kosong"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            />
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -68,6 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
+            android:onClickListener="@{model::onClickAdd}"
             />
         <ProgressBar
             android:id="@+id/loading"

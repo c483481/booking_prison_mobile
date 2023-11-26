@@ -68,7 +68,11 @@ class CellActivity : AppCompatActivity(), CellListener {
 
         val onClickAdapter = object : OnClickAdapter<CellResponse> {
             override fun onClick(data: CellResponse) {
-                toast(data.xid)
+                val i = Intent(baseContext, NapiActivity::class.java)
+                i.putExtra("cellName", data.name)
+                i.putExtra("cellXid", data.xid)
+                startActivity(i)
+                finish()
             }
         }
 
