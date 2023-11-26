@@ -10,7 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface BookingNetwork {
@@ -29,6 +31,12 @@ interface BookingNetwork {
         @Query("limit") limit: Int = 10,
         @Query("showAll") showAll: Boolean = false,
     ): Call<Response<ResponseList<BookingResponse>>>
+
+    @PATCH("/booking/{xid}")
+    fun updateStatus(
+        @Header("Authorization") token: String,
+        @Path("xid") xid: String
+    ): Call<Response<Any>>
 
     companion object {
         operator fun invoke(): BookingNetwork {
