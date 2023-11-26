@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="330dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    android:background="@drawable/pop_up_background">
+    <ImageView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_danger"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:layout_marginTop="120dp"
+        android:text="Apakah anda yakin ingin \nmenyelesaikan semua \ndaftar antrian?"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:layout_marginTop="180dp"
+        android:textColor="#FF0000"
+        android:text="daftar antrian\ntidak akan bisa di recover lagi"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="240dp"
+        >
+        <Button
+            android:id="@+id/pop_up_sure_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="#42FF00"
+            android:textColor="@color/black"
+            android:text="Hapus"
+            />
+        <Button
+            android:id="@+id/pop_up_cancel_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="#2596be"
+            android:text="Batal"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
