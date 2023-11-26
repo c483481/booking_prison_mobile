@@ -15,3 +15,12 @@ data class BookingResponse(
     val version: Int,
     val xid: String
 )
+
+fun Array<BookingResponse>.removeByXid(xid: String): Array<BookingResponse> {
+    val mutableList = toMutableList()
+    val index = mutableList.indexOfFirst { it.xid == xid }
+    if (index != -1) {
+        mutableList.removeAt(index)
+    }
+    return mutableList.toTypedArray()
+}
