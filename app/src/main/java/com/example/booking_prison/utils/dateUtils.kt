@@ -8,3 +8,8 @@ fun dateToIsoString(date: Date): String {
     val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
     return sdf.format(date)
 }
+
+fun epochToDateString(epoch: Int): String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return sdf.format(Date(epoch.toLong() * 1000))
+}
