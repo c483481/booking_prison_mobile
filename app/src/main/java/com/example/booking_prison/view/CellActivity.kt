@@ -43,7 +43,9 @@ class CellActivity : AppCompatActivity(), CellListener {
     }
 
     override fun onClickAdd() {
-        toast("pergi ke halkaman tambah cell")
+        val i  = Intent(this, AddCellActivity::class.java)
+        startActivity(i)
+        finish()
     }
 
     override fun onFetch() {

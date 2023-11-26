@@ -2,6 +2,11 @@
 <layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.booking_prison.view_model.AddCellViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +26,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
                 <ImageView
+                    android:onClickListener="@{model::onClickBack}"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_back_button"
@@ -65,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:layout_marginTop="60dp"
+                android:text="@={model.name}"
                 android:hint="Nama Cell"
                 android:layout_marginHorizontal="20dp"
                 android:textSize="20sp"
@@ -76,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:text="@={model.max}"
                 android:layout_marginTop="120dp"
                 android:layout_marginHorizontal="20dp"
                 android:textSize="20sp"
@@ -87,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
+                android:onClickListener="@{model::onClickAdd}"
                 android:layout_marginHorizontal="20dp"
                 android:backgroundTint="#2596be"
                 android:text="Tambah Cell"
