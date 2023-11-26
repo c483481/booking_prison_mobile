@@ -9,4 +9,7 @@ interface AntrianListener {
     fun onClickBack()
     fun onFailed()
     fun onSuccessPatch(xid: String)
+    fun onClickClearAntrian()
+
+    fun onSuccessClear()
 }

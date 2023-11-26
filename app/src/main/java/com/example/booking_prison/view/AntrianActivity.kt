@@ -1,9 +1,11 @@
 package com.example.booking_prison.view
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +27,7 @@ class AntrianActivity : AppCompatActivity(), AntrianListener {
     lateinit var binding: ActivityAntrianBinding
     private var items: Array<BookingResponse> = arrayOf()
     lateinit var adapter: BookingPenjagaAdapter
+    lateinit var mDialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_antrian)
@@ -45,6 +48,19 @@ class AntrianActivity : AppCompatActivity(), AntrianListener {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
+
+        mDialog = Dialog(this)
+
+        mDialog.setContentView(R.layout.pop_up_make_sure)
+
+        mDialog.findViewById<Button>(R.id.pop_up_cancel_button).setOnClickListener {
+            mDialog.dismiss()
+        }
+
+        mDialog.findViewById<Button>(R.id.pop_up_sure_button).setOnClickListener {
+            mDialog.dismiss()
+            model.clearAll()
+        }
 
         model.fetchData()
     }
@@ -88,5 +104,15 @@ class AntrianActivity : AppCompatActivity(), AntrianListener {
             binding.scrollView.visibility = View.INVISIBLE
             binding.emptyText.visibility = View.VISIBLE
         }
+    }
+
+    override fun onClickClearAntrian() {
+        mDialog.show()
+    }
+
+    override fun onSuccessClear() {
+        binding.loading.hide()
+        items = arrayOf()
+        adapter.updateData(items)
     }
 }

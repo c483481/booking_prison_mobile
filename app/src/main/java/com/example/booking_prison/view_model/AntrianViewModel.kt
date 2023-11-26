@@ -37,6 +37,19 @@ class AntrianViewModel: ViewModel() {
     }
 
     fun onClickClearAll(view: View) {
+        antrianListener.onClickClearAntrian()
+    }
+
+    fun clearAll() {
         antrianListener.onFetchAntrian()
+
+        val result = bookingRepository.updateAllStatusToday(loginUtils.getAccessToken())
+        result.observeForever {
+            if(it) {
+                antrianListener.onSuccessClear()
+                return@observeForever
+            }
+            antrianListener.onFailed()
+        }
     }
 }
