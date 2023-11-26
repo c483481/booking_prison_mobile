@@ -3,6 +3,7 @@ package com.example.booking_prison.network
 import com.example.asisten_damkar.response.Response
 import com.example.asisten_damkar.response.ResponseList
 import com.example.booking_prison.response.BookingResponse
+import com.example.booking_prison.response.NapiResponse
 import com.example.booking_prison.utils.getBaseUrl
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -18,7 +19,7 @@ interface NapiNetwork {
         @Query("filters[cellName]") cellName: String? = null,
         @Query("limit") limit: Int = 10,
         @Query("showAll") showAll: Boolean = false,
-    ): Call<Response<ResponseList<BookingResponse>>>
+    ): Call<Response<ResponseList<NapiResponse>>>
 
     companion object {
         operator fun invoke(): NapiNetwork {
