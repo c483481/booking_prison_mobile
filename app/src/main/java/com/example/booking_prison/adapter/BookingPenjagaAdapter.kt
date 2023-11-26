@@ -1,5 +1,6 @@
 package com.example.booking_prison.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.example.booking_prison.R
 import com.example.booking_prison.listener.OnClickAdapter
 import com.example.booking_prison.response.BookingResponse
 
-class BookingPenjagaAdapter(private val items: Array<BookingResponse>, private val listener: OnClickAdapter<BookingResponse>): RecyclerView.Adapter<BookingPenjagaAdapter.ViewHolder>() {
+class BookingPenjagaAdapter(private var items: Array<BookingResponse>, private val listener: OnClickAdapter<BookingResponse>): RecyclerView.Adapter<BookingPenjagaAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.card_booking_name)
         val alamat: TextView = itemView.findViewById(R.id.card_booking_alamat)
@@ -29,6 +30,12 @@ class BookingPenjagaAdapter(private val items: Array<BookingResponse>, private v
 
     override fun getItemCount(): Int {
         return items.count()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(items: Array<BookingResponse>) {
+        this.items = items
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
