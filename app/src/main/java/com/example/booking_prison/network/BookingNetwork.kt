@@ -25,6 +25,7 @@ interface BookingNetwork {
         @Header("Authorization") token: String,
         @Query("filters[users]") isUsers: Boolean? = null,
         @Query("filters[notClear]") noClear: Boolean? = null,
+        @Query("filters[today]") today: Boolean? = null,
         @Query("limit") limit: Int = 10,
         @Query("showAll") showAll: Boolean = false,
     ): Call<Response<ResponseList<BookingResponse>>>

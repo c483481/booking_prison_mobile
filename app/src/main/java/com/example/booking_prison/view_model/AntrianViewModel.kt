@@ -12,7 +12,8 @@ class AntrianViewModel: ViewModel() {
     private val bookingRepository = BookingRepository()
     fun fetchData() {
         antrianListener.onFetchAntrian()
-        val result = bookingRepository.getListBooking(loginUtils.getAccessToken(), showAll = true, notClear = true)
+        val result = bookingRepository
+            .getListBooking(loginUtils.getAccessToken(), showAll = true, notClear = true, today = true)
 
         result.observeForever {
             antrianListener.onGetAntrianData(it)

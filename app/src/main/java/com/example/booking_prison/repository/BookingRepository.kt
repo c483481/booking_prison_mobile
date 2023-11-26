@@ -32,11 +32,11 @@ class BookingRepository {
         return data
     }
 
-    fun getListBooking(token: String, isUsers: Boolean? = null, limit: Int = 10, showAll: Boolean = false, notClear: Boolean? = null): LiveData<ResponseList<BookingResponse>?> {
+    fun getListBooking(token: String, isUsers: Boolean? = null, limit: Int = 10, showAll: Boolean = false, notClear: Boolean? = null, today: Boolean? = null): LiveData<ResponseList<BookingResponse>?> {
         val data = MutableLiveData<ResponseList<BookingResponse>?>()
 
         bookingNetwork
-            .getListBooking(token, isUsers = isUsers, limit = limit, showAll = showAll, noClear = notClear)
+            .getListBooking(token, isUsers = isUsers, limit = limit, showAll = showAll, noClear = notClear, today = today)
             .enqueue(object : Callback<Response<ResponseList<BookingResponse>>> {
                 override fun onResponse(
                     call: Call<Response<ResponseList<BookingResponse>>>,
