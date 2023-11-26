@@ -80,4 +80,20 @@ class BookingRepository {
 
         return data
     }
+
+    fun updateAllStatusToday(token: String): LiveData<Boolean> {
+        val data = MutableLiveData<Boolean>()
+
+        bookingNetwork.updateTodayStatus(token).enqueue(object : Callback<Any> {
+            override fun onResponse(call: Call<Any>, response: retrofit2.Response<Any>) {
+                data.value = response.isSuccessful
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                data.value = false
+            }
+        })
+
+        return data
+    }
 }
