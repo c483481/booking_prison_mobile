@@ -3,13 +3,14 @@ package com.example.booking_prison.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booking_prison.R
+import com.example.booking_prison.listener.OnClickAdapter
 import com.example.booking_prison.response.BookingResponse
-import com.example.booking_prison.utils.epochToDateString
 
-class BookingPenjagaAdapter(private val items: Array<BookingResponse>): RecyclerView.Adapter<BookingPenjagaAdapter.ViewHolder>() {
+class BookingPenjagaAdapter(private val items: Array<BookingResponse>, private val listener: OnClickAdapter<BookingResponse>): RecyclerView.Adapter<BookingPenjagaAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.card_booking_name)
         val alamat: TextView = itemView.findViewById(R.id.card_booking_alamat)
@@ -18,6 +19,7 @@ class BookingPenjagaAdapter(private val items: Array<BookingResponse>): Recycler
         val noTelp: TextView = itemView.findViewById(R.id.card_booking_telp)
         val barang: TextView = itemView.findViewById(R.id.card_booking_barang)
         val sesi: TextView = itemView.findViewById(R.id.card_booking_sesi)
+        val button: Button = itemView.findViewById(R.id.clear_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,5 +41,8 @@ class BookingPenjagaAdapter(private val items: Array<BookingResponse>): Recycler
         holder.barang.text = item.barang
         holder.noTelp.text = item.noTelp
         holder.sesi.text = item.sesi
+        holder.button.setOnClickListener {
+            listener.onClick(item)
+        }
     }
 }
