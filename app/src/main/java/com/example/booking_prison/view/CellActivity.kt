@@ -3,6 +3,7 @@ package com.example.booking_prison.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,6 +59,13 @@ class CellActivity : AppCompatActivity(), CellListener {
 
     override fun onSuccessFetch(data: ResponseList<CellResponse>) {
         binding.loading.hide()
+        if(data.items.size == 0) {
+            binding.emptyText.visibility = View.VISIBLE
+            return
+        }
+
+        binding.scrollView.visibility = View.VISIBLE
+
         val onClickAdapter = object : OnClickAdapter<CellResponse> {
             override fun onClick(data: CellResponse) {
                 toast(data.xid)
