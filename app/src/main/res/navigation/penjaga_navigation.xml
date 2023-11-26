@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/penjaga_navigation"
+    app:startDestination="@id/homePenjagaFragment">
+    <fragment
+        android:id="@+id/homePenjagaFragment"
+        android:name="com.example.booking_prison.view.HomePenjagaFragment"
+        android:label="fragment_home_penjaga"
+        tools:layout="@layout/fragment_home_penjaga" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.booking_prison.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.booking_prison.view.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
