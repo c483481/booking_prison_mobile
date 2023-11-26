@@ -14,7 +14,7 @@ class NapiViewModel: ViewModel() {
     private val napiRepository = NapiRepository()
     fun fetchNapi() {
         napiListener.onFetch()
-        val data = napiRepository.getListNapi(loginUtils.getAccessToken(), cellName = cellName)
+        val data = napiRepository.getListNapi(loginUtils.getAccessToken(), cellName = cellName, showAll = true)
 
         data.observeForever {
             if(it == null) {

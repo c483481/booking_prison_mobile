@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.example.booking_prison.listener.NapiListener
 import com.example.booking_prison.listener.OnClickAdapter
 import com.example.booking_prison.response.NapiResponse
 import com.example.booking_prison.utils.LoginUtils
+import com.example.booking_prison.utils.epochToDateString
 import com.example.booking_prison.utils.hide
 import com.example.booking_prison.utils.show
 import com.example.booking_prison.utils.toast
@@ -53,9 +55,29 @@ class NapiActivity : AppCompatActivity(), NapiListener {
             addDialog.dismiss()
         }
 
+        val infoDialog = Dialog(this)
+        infoDialog.setContentView(R.layout.pop_up_detail_profile)
+        infoDialog.findViewById<Button>(R.id.pop_up_button).setOnClickListener {
+            infoDialog.dismiss()
+        }
+
+        val name = infoDialog.findViewById<TextView>(R.id.pop_up_name)
+        val tanggal = infoDialog.findViewById<TextView>(R.id.pop_up_long_time)
+        val reason = infoDialog.findViewById<TextView>(R.id.pop_up_reason)
+        val id = infoDialog.findViewById<TextView>(R.id.pop_up_id)
+        val create = infoDialog.findViewById<TextView>(R.id.pop_up_create)
+        val cell = infoDialog.findViewById<TextView>(R.id.pop_up_cell)
+
         onClickAdapter = object : OnClickAdapter<NapiResponse> {
             override fun onClick(data: NapiResponse) {
-                toast(data.xid)
+                name.text = "Nama: ${data.name}"
+                tanggal.text = "Bebas Pada : ${epochToDateString(data.dateOut)}"
+                reason.text = "Alasan: ${data.reason}"
+                id.text = "No Id: ${data.xid}"
+                create.text = "tanggal Masuk: ${epochToDateString(data.createdAt)}"
+                cell.text = "Cell: ${data.cell}"
+
+                infoDialog.show()
             }
         }
 
