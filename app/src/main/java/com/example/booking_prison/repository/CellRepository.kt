@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.asisten_damkar.response.Response
 import com.example.asisten_damkar.response.ResponseList
+import com.example.booking_prison.network.BodyCell
 import com.example.booking_prison.network.CellNetwork
 import com.example.booking_prison.response.CellResponse
 import retrofit2.Call
@@ -31,6 +32,22 @@ class CellRepository {
                 data.value = null
             }
 
+        })
+
+        return data
+    }
+
+    fun addCell(token: String, payload: BodyCell): LiveData<Boolean> {
+        val data = MutableLiveData<Boolean>()
+
+        cellNetwork.postAddCell(token, payload).enqueue(object : Callback<Any> {
+            override fun onResponse(call: Call<Any>, response: retrofit2.Response<Any>) {
+                data.value = response.isSuccessful
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                data.value = false
+            }
         })
 
         return data
