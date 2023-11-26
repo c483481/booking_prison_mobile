@@ -1,21 +1,23 @@
 package com.example.booking_prison.view
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.asisten_damkar.response.ResponseList
 import com.example.booking_prison.R
-import com.example.booking_prison.adapter.CellAdapter
 import com.example.booking_prison.adapter.NapiAdapter
 import com.example.booking_prison.databinding.ActivityNapiBinding
 import com.example.booking_prison.listener.NapiListener
 import com.example.booking_prison.listener.OnClickAdapter
-import com.example.booking_prison.response.CellResponse
 import com.example.booking_prison.response.NapiResponse
+import com.example.booking_prison.utils.LoginUtils
 import com.example.booking_prison.utils.hide
 import com.example.booking_prison.utils.show
 import com.example.booking_prison.utils.toast
@@ -23,6 +25,8 @@ import com.example.booking_prison.view_model.NapiViewModel
 
 class NapiActivity : AppCompatActivity(), NapiListener {
     lateinit var binding: ActivityNapiBinding
+    private lateinit var onClickAdapter: OnClickAdapter<NapiResponse>
+    lateinit var addDialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_napi)
@@ -32,6 +36,28 @@ class NapiActivity : AppCompatActivity(), NapiListener {
         model.napiListener = this
         val cellName = intent.getStringExtra("cellName")!!
         model.cellName = cellName
+        model.loginUtils = LoginUtils(this)
+        val cellXid = intent.getStringExtra("cellXid")!!
+
+        addDialog = Dialog(this)
+        addDialog.setContentView(R.layout.pop_up_add_napi)
+        addDialog.findViewById<Button>(R.id.pop_up_add_button).setOnClickListener {
+            val name = addDialog.findViewById<EditText>(R.id.pop_up_name).text.toString()
+            val tanggal = addDialog.findViewById<EditText>(R.id.pop_up_long_time).text.toString()
+            val reason = addDialog.findViewById<EditText>(R.id.pop_up_reason).text.toString()
+
+            model.addNapi(name, reason, tanggal, cellXid)
+        }
+
+        addDialog.findViewById<Button>(R.id.pop_up_cancel_button).setOnClickListener {
+            addDialog.dismiss()
+        }
+
+        onClickAdapter = object : OnClickAdapter<NapiResponse> {
+            override fun onClick(data: NapiResponse) {
+                toast(data.xid)
+            }
+        }
 
         binding.model = model
 
@@ -51,12 +77,6 @@ class NapiActivity : AppCompatActivity(), NapiListener {
 
         binding.scrollView.visibility = View.VISIBLE
 
-        val onClickAdapter = object : OnClickAdapter<NapiResponse> {
-            override fun onClick(data: NapiResponse) {
-                toast(data.xid)
-            }
-        }
-
         val adapter = NapiAdapter(data.items, onClickAdapter)
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
@@ -74,6 +94,16 @@ class NapiActivity : AppCompatActivity(), NapiListener {
     }
 
     override fun onClickAdd() {
-        toast("add napi")
+        addDialog.show()
+    }
+
+    override fun onNotValid() {
+        binding.loading.hide()
+        toast("please fill the form correctly")
+    }
+
+    override fun onSuccessAdd() {
+        startActivity(Intent(this, CellActivity::class.java))
+        finish()
     }
 }

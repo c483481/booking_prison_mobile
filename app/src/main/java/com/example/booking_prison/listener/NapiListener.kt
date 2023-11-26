@@ -9,4 +9,6 @@ interface NapiListener {
     fun onFailed()
     fun onClickBack()
     fun onClickAdd()
+    fun onNotValid()
+    fun onSuccessAdd()
 }

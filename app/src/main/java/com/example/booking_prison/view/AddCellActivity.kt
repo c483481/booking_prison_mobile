@@ -50,6 +50,7 @@ class AddCellActivity : AppCompatActivity(), AddCellListener {
     }
 
     override fun onNotValid() {
+        binding.loading.hide()
         toast("please fill the form correctly")
     }
 }
