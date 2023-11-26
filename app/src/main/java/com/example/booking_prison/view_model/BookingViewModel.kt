@@ -57,4 +57,8 @@ class BookingViewModel: ViewModel() {
         val result = bookingRepository.createBooking(loginUtils.getAccessToken(), payload)
         bookingListener.onClick(result)
     }
+
+    fun onClickBackButton(view: View){
+        bookingListener.onBack()
+    }
 }

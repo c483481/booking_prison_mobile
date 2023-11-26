@@ -26,6 +26,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
                 <ImageView
+                    android:onClickListener="@{model::onClickBackButton}"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_back_button"

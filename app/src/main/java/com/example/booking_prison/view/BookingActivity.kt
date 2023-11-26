@@ -112,4 +112,10 @@ class BookingActivity : AppCompatActivity(), BookingListener {
         toast("please fill the form")
     }
 
+    override fun onBack() {
+        val i = Intent(this, HomeActivity::class.java)
+        startActivity(i)
+        finish()
+    }
+
 }
