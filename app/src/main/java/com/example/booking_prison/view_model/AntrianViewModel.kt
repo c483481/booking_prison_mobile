@@ -35,4 +35,8 @@ class AntrianViewModel: ViewModel() {
             antrianListener.onFailed()
         }
     }
+
+    fun onClickClearAll(view: View) {
+        antrianListener.onFetchAntrian()
+    }
 }
