@@ -7,4 +7,6 @@ interface AntrianListener {
     fun onFetchAntrian()
     fun onGetAntrianData(data: ResponseList<BookingResponse>?)
     fun onClickBack()
+    fun onFailed()
+    fun onSuccessPatch(xid: String)
 }
