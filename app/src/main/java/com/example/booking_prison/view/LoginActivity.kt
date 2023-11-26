@@ -47,6 +47,12 @@ class LoginActivity : AppCompatActivity(), LoginListener {
                 return@Observer
             }
             loginUtils.createLoginSession(it)
+            if(it.tagRole == "ADM" || it.tagRole == "PJG") {
+                val i = Intent(this, HomePenjagaActivity::class.java)
+                startActivity(i)
+                finish()
+                return@Observer
+            }
             val i  = Intent(this, HomeActivity::class.java)
             startActivity(i)
             finish()
