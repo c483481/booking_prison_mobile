@@ -9,7 +9,7 @@ import com.example.booking_prison.R
 import com.example.booking_prison.response.BookingResponse
 import com.example.booking_prison.utils.epochToDateString
 
-class BookingUserAdapter(private val items: List<BookingResponse>): RecyclerView.Adapter<BookingUserAdapter.ViewHolder>() {
+class BookingUserAdapter(private val items: Array<BookingResponse>): RecyclerView.Adapter<BookingUserAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.card_booking_name)
         val alamat: TextView = itemView.findViewById(R.id.card_booking_alamat)

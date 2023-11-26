@@ -19,8 +19,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.asisten_damkar.response.ResponseList
 import com.example.booking_prison.R
+import com.example.booking_prison.adapter.BookingUserAdapter
 import com.example.booking_prison.databinding.FragmentHomeBinding
 import com.example.booking_prison.listener.HomeListener
 import com.example.booking_prison.response.BookingResponse
@@ -90,7 +93,10 @@ class HomeFragment : Fragment(), HomeListener {
         }
 
         scrollView.visibility = View.VISIBLE
-
-        Toast.makeText(context, "data ada", Toast.LENGTH_LONG).show()
+        val adapter = BookingUserAdapter(data.items)
+        val layoutManager = LinearLayoutManager(context)
+        val recyclerView = mdialog.findViewById<RecyclerView>(R.id.pop_up_recycler_view)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
     }
 }
