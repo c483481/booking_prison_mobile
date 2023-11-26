@@ -7,8 +7,10 @@ import com.example.booking_prison.utils.getBaseUrl
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface CellNetwork {
@@ -18,6 +20,13 @@ interface CellNetwork {
         @Query("limit") limit: Int = 10,
         @Query("showAll") showAll: Boolean = false,
     ): Call<Response<ResponseList<CellResponse>>>
+
+    @POST("/cell")
+    fun postAddCell(
+        @Header("Authorization") token: String,
+        @Body data: BodyCell
+    ): Call<Any>
+
     companion object {
         operator fun invoke(): CellNetwork {
             return Retrofit.Builder()
@@ -28,3 +37,8 @@ interface CellNetwork {
         }
     }
 }
+
+data class BodyCell(
+    val name: String,
+    val max: Int
+)
