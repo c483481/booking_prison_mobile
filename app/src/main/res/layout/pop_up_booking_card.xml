@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="500dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    android:background="@drawable/pop_up_background">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item Kosong"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+        android:visibility="invisible"
+        android:id="@+id/pop_up_data_empty"
+        />
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:id="@+id/pop_up_loading"
+        />
+    <ScrollView
+        android:id="@+id/pop_up_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:visibility="invisible"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pop_up_recycler_view"
+            tools:listitem="@layout/adapter_card_booking"
+            />
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="420dp"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="#2596be"
+        android:text="Kembali"
+        />
+</RelativeLayout>
