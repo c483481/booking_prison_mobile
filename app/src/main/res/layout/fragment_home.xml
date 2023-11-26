@@ -76,6 +76,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
+                android:onClickListener="@{model::onClickCheckBooking}"
                 android:text="cek"
                 />
         </LinearLayout>
