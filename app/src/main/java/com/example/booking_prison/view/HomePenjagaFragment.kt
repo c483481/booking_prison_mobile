@@ -44,6 +44,7 @@ class HomePenjagaFragment : Fragment(), HomePenjagaListener {
     }
 
     override fun onClickDataNapi() {
-        Toast.makeText(context, "data", Toast.LENGTH_LONG).show()
+        val i = Intent(context, CellActivity::class.java)
+        startActivity(i)
     }
 }
