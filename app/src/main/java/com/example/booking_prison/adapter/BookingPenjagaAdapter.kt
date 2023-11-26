@@ -32,7 +32,7 @@ class BookingPenjagaAdapter(private val items: Array<BookingResponse>): Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
-        holder.antrian.text = position.toString()
+        holder.antrian.text = (position + 1).toString()
         holder.ktp.text = item.noKtp
         holder.alamat.text = item.alamat
         holder.name.text = item.name

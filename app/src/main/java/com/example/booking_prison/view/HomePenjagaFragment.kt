@@ -1,5 +1,6 @@
 package com.example.booking_prison.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,7 +31,8 @@ class HomePenjagaFragment : Fragment(), HomePenjagaListener {
     }
 
     override fun onClickAntrtian() {
-        Toast.makeText(context, "antrian", Toast.LENGTH_LONG).show()
+        val i = Intent(context, AntrianActivity::class.java)
+        startActivity(i)
     }
 
     override fun onClickActivitas() {
