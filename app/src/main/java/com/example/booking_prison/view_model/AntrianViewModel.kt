@@ -23,4 +23,16 @@ class AntrianViewModel: ViewModel() {
     fun onClickBackButton(view: View)  {
         antrianListener.onClickBack()
     }
+
+    fun updateStatusBooking(xid: String) {
+        antrianListener.onFetchAntrian()
+        val result = bookingRepository.patchBookingStatus(loginUtils.getAccessToken(), xid)
+        result.observeForever {
+            if(it) {
+                antrianListener.onSuccessPatch(xid)
+                return@observeForever
+            }
+            antrianListener.onFailed()
+        }
+    }
 }
