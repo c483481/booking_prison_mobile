@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="model"
+            type="com.example.booking_prison.view_model.HomePenjagaViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,6 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="20dp"
+            android:onClickListener="@{model::onClickAntrian}"
             >
             <LinearLayout
                 android:layout_margin="10dp"
@@ -67,6 +73,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/antrian"
             android:layout_marginLeft="20dp"
+            android:onClickListener="@{model::onClickActivitas}"
             >
             <LinearLayout
                 android:layout_margin="10dp"
@@ -94,6 +101,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/activitas_napi"
             android:layout_marginLeft="20dp"
+            android:onClickListener="@{model::onClickCalendar}"
             >
             <LinearLayout
                 android:layout_margin="10dp"
@@ -121,6 +129,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/calendar"
             android:layout_marginLeft="20dp"
+            android:onClickListener="@{model::onClickDataNapi}"
             >
             <LinearLayout
                 android:layout_margin="10dp"

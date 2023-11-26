@@ -5,56 +5,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.booking_prison.R
+import com.example.booking_prison.databinding.FragmentHomePenjagaBinding
+import com.example.booking_prison.listener.HomePenjagaListener
+import com.example.booking_prison.view_model.HomePenjagaViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomePenjagaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomePenjagaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+class HomePenjagaFragment : Fragment(), HomePenjagaListener {
+    lateinit var binding: FragmentHomePenjagaBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_penjaga, container, false)
+        binding = FragmentHomePenjagaBinding.inflate(inflater)
+
+        val model = ViewModelProvider(this)[HomePenjagaViewModel::class.java]
+
+        model.homePenjagaListener = this
+
+        binding.model = model
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomePenjagaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomePenjagaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onClickAntrtian() {
+        Toast.makeText(context, "antrian", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onClickActivitas() {
+        Toast.makeText(context, "activitas", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onClickJadwalPicket() {
+        Toast.makeText(context, "jadwal", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onClickDataNapi() {
+        Toast.makeText(context, "data", Toast.LENGTH_LONG).show()
     }
 }
