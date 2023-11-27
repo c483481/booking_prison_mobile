@@ -19,7 +19,7 @@ class HomeViewModel: ViewModel() {
     fun onClickCheckBooking(view: View) {
         homeListener.onFetchBooking()
 
-        val result = bookingRepository.getListBooking(loginUtils.getAccessToken(), isUsers = true)
+        val result = bookingRepository.getListBooking(loginUtils.getAccessToken(), isUsers = true, notClear = true)
 
         result.observeForever {
             homeListener.onGetResult(it)
