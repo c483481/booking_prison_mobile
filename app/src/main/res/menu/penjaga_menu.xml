@@ -10,9 +10,4 @@
         android:icon="@drawable/ic_home"
         android:id="@+id/homePenjagaFragment"
         />
-    <item
-        android:title="setting"
-        android:icon="@drawable/ic_settings"
-        android:id="@+id/settingsFragment"
-        />
 </menu>
