@@ -29,12 +29,13 @@ class AbsenActivity : AppCompatActivity(), AbsenListener {
     lateinit var name: TextView
     lateinit var id: TextView
     lateinit var cell: TextView
+    lateinit var tema: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_absen)
         setContentView(binding.root)
 
-        val tema = intent.getStringExtra("tema")!!
+        tema = intent.getStringExtra("tema")!!
         binding.titleText.text = tema
 
         dialog = Dialog(this)
@@ -94,6 +95,9 @@ class AbsenActivity : AppCompatActivity(), AbsenListener {
     }
 
     override fun onClickAdd() {
-        toast("pergi ke halaman add")
+        val i = Intent(this, AddAbsenActivity::class.java)
+        i.putExtra("tema", tema)
+        startActivity(i)
+        finish()
     }
 }

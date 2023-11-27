@@ -9,6 +9,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface AbsenNetwork {
@@ -20,6 +22,14 @@ interface AbsenNetwork {
         @Query("filters[tema]") tema: String? = null,
         @Query("filters[today]") today: Boolean? = null,
     ): Call<Response<ResponseList<AbsenResponse>>>
+
+    @POST("/absen/{xid}/{tema}")
+    fun postAddAbsen(
+        @Header("Authorization") token: String,
+        @Path("xid") xid: String,
+        @Path("tema") tema: String
+    ): Call<Any>
+
     companion object {
         operator fun invoke(): AbsenNetwork {
             return Retrofit.Builder()

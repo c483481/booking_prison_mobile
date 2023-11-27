@@ -38,4 +38,21 @@ class AbsenRepository {
 
         return data
     }
+
+    fun postAddAbsen(token: String, xid: String, tema: String): LiveData<Boolean> {
+        val data = MutableLiveData<Boolean>()
+
+        absenNetwork.postAddAbsen(token, xid, tema).enqueue(object : Callback<Any> {
+            override fun onResponse(call: Call<Any>, response: retrofit2.Response<Any>) {
+                data.value = response.isSuccessful
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                data.value = false
+            }
+
+        })
+
+        return data
+    }
 }
