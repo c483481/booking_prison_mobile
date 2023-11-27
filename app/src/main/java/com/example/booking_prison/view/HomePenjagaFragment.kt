@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.booking_prison.R
 import com.example.booking_prison.databinding.FragmentHomePenjagaBinding
 import com.example.booking_prison.listener.HomePenjagaListener
 import com.example.booking_prison.view_model.HomePenjagaViewModel
@@ -41,7 +39,8 @@ class HomePenjagaFragment : Fragment(), HomePenjagaListener {
     }
 
     override fun onClickJadwalPicket() {
-        Toast.makeText(context, "jadwal", Toast.LENGTH_LONG).show()
+        val i = Intent(context, JadwalActivity::class.java)
+        startActivity(i)
     }
 
     override fun onClickDataNapi() {
