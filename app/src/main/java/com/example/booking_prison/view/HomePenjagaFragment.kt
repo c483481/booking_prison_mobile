@@ -36,7 +36,8 @@ class HomePenjagaFragment : Fragment(), HomePenjagaListener {
     }
 
     override fun onClickActivitas() {
-        Toast.makeText(context, "activitas", Toast.LENGTH_LONG).show()
+        val i = Intent(context, ActivitasActivity::class.java)
+        startActivity(i)
     }
 
     override fun onClickJadwalPicket() {

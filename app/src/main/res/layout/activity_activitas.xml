@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.booking_prison.view_model.AktivitasViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +29,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_back_button"
+                    android:onClickListener="@{model::onClickBackButton}"
                     />
             </LinearLayout>
             <TextView
@@ -49,6 +55,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
             android:background="@color/white"
+            android:onClickListener="@{model::onCLickIbadah}"
             >
             <TextView
                 android:layout_width="0dp"
@@ -76,6 +83,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
             android:background="@color/white"
+            android:onClickListener="@{model::onClickOlahraga}"
             >
             <TextView
                 android:layout_width="0dp"
@@ -103,6 +111,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
             android:background="@color/white"
+            android:onClickListener="@{model::onClickCleaning}"
             >
             <TextView
                 android:layout_width="0dp"
@@ -130,6 +139,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
             android:background="@color/white"
+            android:onClickListener="@{model::onClickSenam}"
             >
             <TextView
                 android:layout_width="0dp"
