@@ -12,7 +12,7 @@ class AbsenViewModel: ViewModel() {
     private val absenRepository = AbsenRepository()
     fun fetch(tema: String) {
         absenListener.onLoading()
-        val data = absenRepository.getListAbsen(loginUtils.getAccessToken(), showAll = true, tema = tema)
+        val data = absenRepository.getListAbsen(loginUtils.getAccessToken(), showAll = true, tema = tema, today = true)
         data.observeForever {
             if(it == null) {
                 absenListener.onFailed()

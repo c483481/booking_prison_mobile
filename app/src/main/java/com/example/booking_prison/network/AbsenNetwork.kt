@@ -17,7 +17,8 @@ interface AbsenNetwork {
         @Header("Authorization") token: String,
         @Query("limit") limit: Int = 10,
         @Query("showAll") showAll: Boolean = false,
-        @Query("filters[tema]") tema: String? = null
+        @Query("filters[tema]") tema: String? = null,
+        @Query("filters[today]") today: Boolean? = null,
     ): Call<Response<ResponseList<AbsenResponse>>>
     companion object {
         operator fun invoke(): AbsenNetwork {

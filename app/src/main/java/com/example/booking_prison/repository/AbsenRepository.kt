@@ -12,10 +12,10 @@ import retrofit2.Callback
 class AbsenRepository {
     private val absenNetwork = AbsenNetwork()
 
-    fun getListAbsen(token: String, limit: Int = 10, showAll: Boolean = false, tema: String? = null): LiveData<ResponseList<AbsenResponse>?> {
+    fun getListAbsen(token: String, limit: Int = 10, showAll: Boolean = false, tema: String? = null, today: Boolean? = null): LiveData<ResponseList<AbsenResponse>?> {
         val data = MutableLiveData<ResponseList<AbsenResponse>?>()
 
-        absenNetwork.getAbsenList(token, limit = limit, showAll = showAll, tema = tema).enqueue(object: Callback<Response<ResponseList<AbsenResponse>>> {
+        absenNetwork.getAbsenList(token, limit = limit, showAll = showAll, tema = tema, today = today).enqueue(object: Callback<Response<ResponseList<AbsenResponse>>> {
             override fun onResponse(
                 call: Call<Response<ResponseList<AbsenResponse>>>,
                 response: retrofit2.Response<Response<ResponseList<AbsenResponse>>>
