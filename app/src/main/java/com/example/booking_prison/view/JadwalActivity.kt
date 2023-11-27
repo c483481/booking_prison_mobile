@@ -111,7 +111,7 @@ class JadwalActivity : AppCompatActivity(), JadwalListener {
     }
 
     override fun onClickBackButton() {
-        startActivity(Intent(this, JadwalActivity::class.java))
+        startActivity(Intent(this, HomePenjagaActivity::class.java))
         finish()
     }
 
